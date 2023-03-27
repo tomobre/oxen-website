@@ -8,6 +8,7 @@ const ContentSecurityPolicy = `
     process.env.NODE_ENV == 'development' ? "'unsafe-eval' " : ''
   }'unsafe-inline' *.ctfassets.net *.youtube.com *.twitter.com;
   child-src 'self' *.ctfassets.net *.youtube.com player.vimeo.com *.twitter.com;
+  frame-src 'self' https://staging.getsession.org/;
   style-src 'self' 'unsafe-inline' *.googleapis.com;
   img-src 'self' blob: data: *.ctfassets.net *.youtube.com *.twitter.com;
   media-src 'self' *.youtube.com;
@@ -32,7 +33,7 @@ const securityHeaders = () => {
     },
     {
       key: 'X-Frame-Options',
-      value: 'SAMEORIGIN',
+      value: 'allow-from *',
     },
     {
       key: 'Permissions-Policy',
